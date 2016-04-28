@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+import extrace.sorter.Sorter_Index_Fragment;
 import extrace.ui.main.R;
 
 public class MainActivity extends Activity implements MainView {
@@ -34,9 +35,10 @@ public class MainActivity extends Activity implements MainView {
     public void setDefaultFragment(){
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-
-        MainFragment indexFragment = new MainFragment();
-        transaction.replace(R.id.fragment_container_layout,indexFragment);
+        Sorter_Index_Fragment fragment=new Sorter_Index_Fragment();
+        transaction.replace(R.id.fragment_container_layout,fragment);
+        //MainFragment indexFragment = new MainFragment();
+       // transaction.replace(R.id.fragment_container_layout,indexFragment);
         transaction.commit();
     }
 }

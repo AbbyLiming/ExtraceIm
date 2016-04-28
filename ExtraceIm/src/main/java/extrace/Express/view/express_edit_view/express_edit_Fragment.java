@@ -26,7 +26,7 @@ public class express_edit_Fragment extends Fragment implements View.OnClickListe
     private expressPresenter expressPresenter;
     private LinearLayout send_address, receive_address;
     private Button submit;
-    public static int send_id = 0, receive_id = 0;
+    public static int send_id = 1, receive_id = 2;
     private TextView title, sname, stel, saddress, saddressinfo, rname, rtel, raddress, raddressinfo;
     private IDataAdapter<ExpressSheet> adapter;
     private ImageView back;
@@ -45,11 +45,11 @@ public class express_edit_Fragment extends Fragment implements View.OnClickListe
         sname = (TextView) view.findViewById(R.id.sname);
         stel = (TextView) view.findViewById(R.id.stel);
         back = (ImageView) view.findViewById(R.id.top_bar_left_img);
-        saddress = (TextView) view.findViewById(R.id.saddress);
+        saddress = (TextView) view.findViewById(R.id.sadd);
         saddressinfo = (TextView) view.findViewById(R.id.saddressinfo);
         rname = (TextView) view.findViewById(R.id.rname);
         rtel = (TextView) view.findViewById(R.id.rtel);
-        raddress = (TextView) view.findViewById(R.id.raddress);
+        raddress = (TextView) view.findViewById(R.id.radd);
         raddressinfo = (TextView) view.findViewById(R.id.raddressinfo);
         send_address.setOnClickListener(this);
         receive_address.setOnClickListener(this);
@@ -112,8 +112,9 @@ public class express_edit_Fragment extends Fragment implements View.OnClickListe
                 else if (send_id == receive_id)
                 { Toast.makeText(getActivity(), "寄件人与收件人不能相同", Toast.LENGTH_SHORT).show();}
                 else
-                {Toast.makeText(getActivity(),"fragment",Toast.LENGTH_SHORT).show();
-                    expressPresenter.doNewExpress(send_id, receive_id);}
+                {
+                    expressPresenter.doNewExpress(send_id, receive_id);
+                }
                 break;
             default:
                 break;

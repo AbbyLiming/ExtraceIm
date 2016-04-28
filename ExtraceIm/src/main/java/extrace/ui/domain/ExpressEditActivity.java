@@ -2,7 +2,7 @@ package extrace.ui.domain;
 
 import java.util.Locale;
 
-import zxing.util.CaptureActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.xys.libzxing.zxing.activity.CaptureActivity;
+
 import extrace.loader.ExpressLoader;
 import extrace.model.CustomerInfo;
 import extrace.model.ExpressSheet;

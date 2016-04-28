@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import extrace.Customer.Express.view.express_search_view.express_search_Fragment;
+import extrace.main.MyApplication;
 import extrace.ui.main.R;
 import extrace.user.address.AddressFragment;
 
@@ -33,6 +35,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         view.findViewById(R.id.user_tel).setOnClickListener(this);
         view.findViewById(R.id.user_password).setOnClickListener(this);
         view.findViewById(R.id.send_record).setOnClickListener(this);
+        view.findViewById(R.id.receive_record).setOnClickListener(this);
         view.findViewById(R.id.about_soft).setOnClickListener(this);
         view.findViewById(R.id.my_complaint).setOnClickListener(this);
         return view;
@@ -52,6 +55,10 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             case R.id.user_password:
                 break;
             case R.id.send_record:
+                toSendRecordFragment();
+                break;
+            case R.id.receive_record:
+                toReceiveRecordFragment();
                 break;
             case R.id.about_soft:
                 break;
@@ -70,6 +77,25 @@ public class MeFragment extends Fragment implements View.OnClickListener{
 
     private void toSendRecordFragment(){
 
+       express_search_Fragment fragment=new express_search_Fragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("CID",String.valueOf(((MyApplication)getActivity().getApplication()).getUserInfo().getUID()));
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_layout, fragment);
+        transaction.addToBackStack("mefragment");
+        transaction.commit();
+    }
+    private void toReceiveRecordFragment(){
+
+        express_search_Fragment fragment=new express_search_Fragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("Tel",String.valueOf(((MyApplication)getActivity().getApplication()).getUserInfo().getTelCode()));
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_layout, fragment);
+        transaction.addToBackStack("mefragment");
+        transaction.commit();
     }
 
     private void toAboutSoftFragment(){
